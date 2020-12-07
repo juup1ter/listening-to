@@ -28,10 +28,11 @@ def main():
                                                        key=config["lastfm_api_key"])).json()
         trackinfo = trackinfo["recenttracks"]["track"][0]
 
-        album_name = trackinfo['album']['#text'].replace(" ", "_").lower()
+        album_text = trackinfo["album"]["#text"]
+        album_name = album_text.replace(" ", "_").lower()[:32]
+        # album_name = "".join(c[0] for c in trackinfo['album']['#text'].split(" "))
 
-        if album_name not in album_cache:
-            print(f"caching album {album_name}...")
+        if album_name not in album_cache and album_name:
             cover_img = requests.get(trackinfo["image"][1]["#text"]).content
             cover_img = "data:image/jpeg;base64," + str(base64.b64encode(cover_img), "utf-8")
             requests.post(DISCORD_API_POST_URL.format(client_id=config["client_id"]),
@@ -44,12 +45,12 @@ def main():
             with open("album_cache.p", "wb") as f:
                 pickle.dump(album_cache, f)
 
-        rpc.update(details=trackinfo["album"]["#text"],
+        rpc.update(details=album_text if album_text else "Single",
                    state=f"{trackinfo['artist']['#text']} - {trackinfo['name']}",
-                   large_image=album_name)
+                   large_image=album_name if album_name else None)
 
         print(f"updating rpc with current track {trackinfo['name']}...")
-        time.sleep(1)
+        time.sleep(2)
 
 
 if __name__ == '__main__':
