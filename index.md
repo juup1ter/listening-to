@@ -1,5 +1,5 @@
 ## listening-to
-#### A simple discord rpc lastfm integration using pypresence
+A simple discord rpc lastfm integration using pypresence
 You should host your own instance because centralization is bad
 
 
