@@ -1,29 +1,21 @@
-## Welcome to GitHub Pages
+## listening-to
+a simple discord rpc lastfm integration using pypresence
+host your own instance because centralization is bad ;)
 
-You can use the [editor on GitHub](https://github.com/youoralovedone/listening-to/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Installation
+1. go to the [discord dev portal](https://discord.com/developers/) and create a new application
 
-### Markdown
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+### Usage
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+```
+
+
+### Credits
+created by null, null#3333
+logo created by aveen, chill_alcoholic#2199
+
+thanks to qwertyquerty for [pypresence](https://github.com/qwertyquerty/pypresence)
