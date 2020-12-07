@@ -23,33 +23,43 @@ def main():
     rpc = pypresence.Presence(config["client_id"], pipe=0)
     rpc.connect()
 
+    old_trackname = ""
+
     while True:
-        trackinfo = requests.get(LASTFM_API_URL.format(user=config["lastfm_name"],
-                                                       key=config["lastfm_api_key"])).json()
-        trackinfo = trackinfo["recenttracks"]["track"][0]
+        try:
+            trackinfo = requests.get(LASTFM_API_URL.format(user=config["lastfm_name"],
+                                                           key=config["lastfm_api_key"])).json()
+            trackinfo = trackinfo["recenttracks"]["track"][0]
 
-        album_text = trackinfo["album"]["#text"]
-        album_name = album_text.replace(" ", "_").lower()[:32]
+            album_text = trackinfo["album"]["#text"]
+            album_name = album_text.replace(" ", "_").lower()[:32]
 
-        if album_name not in album_cache and album_name:
-            cover_img = requests.get(trackinfo["image"][1]["#text"]).content
-            cover_img = "data:image/jpeg;base64," + str(base64.b64encode(cover_img), "utf-8")
-            requests.post(DISCORD_API_POST_URL.format(client_id=config["client_id"]),
-                          json={"name": album_name,
-                                "image": cover_img,
-                                "type": 1},
-                          headers={"Authorization": config["discord_token"],
-                                   "content-type": "application/json"})
-            album_cache.append(album_name)
-            with open("album_cache.p", "wb") as f:
-                pickle.dump(album_cache, f)
+            if album_name not in album_cache and album_name:
+                print(f"{album_text} not found in album cache, caching...")
+                cover_img = requests.get(trackinfo["image"][1]["#text"]).content
+                cover_img = "data:image/jpeg;base64," + str(base64.b64encode(cover_img), "utf-8")
+                requests.post(DISCORD_API_POST_URL.format(client_id=config["client_id"]),
+                              json={"name": album_name,
+                                    "image": cover_img,
+                                    "type": 1},
+                              headers={"Authorization": config["discord_token"],
+                                       "content-type": "application/json"})
+                album_cache.append(album_name)
+                with open("album_cache.p", "wb") as f:
+                    pickle.dump(album_cache, f)
 
-        rpc.update(details=album_text if album_text else "Single",
-                   state=f"{trackinfo['artist']['#text']} - {trackinfo['name']}",
-                   large_image=album_name if album_name else None)
+            rpc.update(details=album_text if album_text else "Single",
+                       state=f"{trackinfo['artist']['#text']} - {trackinfo['name']}",
+                       large_image=album_name if album_name else None)
 
-        print(f"updating rpc with current track {trackinfo['name']}...")
-        time.sleep(1)
+            if old_trackname != trackinfo["name"]:
+                print(f"updating rpc with current track {trackinfo['name']}...")
+                old_trackname = trackinfo["name"]
+
+            time.sleep(0.5)
+
+        except Exception as e:
+            print("exception occurred:", e)
 
 
 if __name__ == '__main__':
