@@ -30,8 +30,6 @@ in whatever directory you cloned into
 ### Credits
 Created by null, null#3333
 
-
 Logo created by aveen, chill_alcoholic#2199
-
 
 Thanks to qwertyquerty for [pypresence](https://github.com/qwertyquerty/pypresence)
