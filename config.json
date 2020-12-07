@@ -1,0 +1,6 @@
+{
+  "client_id": "<your application id here>",
+  "discord_token": "<your token here>",
+  "lastfm_api_key": "<your key here>",
+  "lastfm_name": "<your lastfm name here>"
+}
