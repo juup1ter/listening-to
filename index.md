@@ -11,10 +11,11 @@ You should host your own instance because centralization is bad
     ```
 1. Go to the [discord dev portal](https://discord.com/developers/) and create a new application. You will replace client_id in config.json with your application id
 2. Find your discord user token, there are plenty of guides on how to do so I will no go into details here. You will replace discord_token in config.json with your token
+    
     > be warned as this is in the grey area of discord tos
     
-    
     > DO NOT SHARE YOUR TOKEN ANYWHERE AND DO NOT COMMIT IT TO GITHUB
+    
 3. Go to the [lastfm api page](https://www.last.fm/api) and register for an account. You will replace lastfm_api_key in config.json with your api key
 4. Finally, replace lastfm_name with your lastfm name in config.json
 
