@@ -30,7 +30,6 @@ def main():
 
         album_text = trackinfo["album"]["#text"]
         album_name = album_text.replace(" ", "_").lower()[:32]
-        # album_name = "".join(c[0] for c in trackinfo['album']['#text'].split(" "))
 
         if album_name not in album_cache and album_name:
             cover_img = requests.get(trackinfo["image"][1]["#text"]).content
@@ -50,7 +49,7 @@ def main():
                    large_image=album_name if album_name else None)
 
         print(f"updating rpc with current track {trackinfo['name']}...")
-        time.sleep(2)
+        time.sleep(1)
 
 
 if __name__ == '__main__':
