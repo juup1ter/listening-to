@@ -1,6 +1,5 @@
 ## listening-to
-A simple discord rpc lastfm integration using pypresence
-
+#### A simple discord rpc lastfm integration using pypresence
 You should host your own instance because centralization is bad
 
 
@@ -26,7 +25,7 @@ To run, simply execute
 python3 server.py
 ```
 in whatever directory you cloned into
-> Discord takes a while to cache the album art so you might have to wait a little before the album art will show up
+> discord takes a while to cache the album art so you might have to wait a little before the album art will show up
 
 ### Credits
 Created by null, null#3333
