@@ -1,7 +1,7 @@
 ## listening-to
 A simple discord rpc lastfm integration using pypresence
 You should host your own instance because centralization is bad
-
+![](screenshot.png)
 
 ### Installation
 1. Clone and cd into this github repository with
