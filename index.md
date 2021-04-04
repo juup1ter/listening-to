@@ -27,6 +27,8 @@ To install from source:
 
 To install a compiled binary, just click download for your platform.
 
+[Windows binary](https://github.com/null0333/listening-to/releases/tag/1)
+
 
 ### Usage
 To run, simply execute
