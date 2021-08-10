@@ -101,5 +101,5 @@ def main():
             print("skipping generic lastfm error: 'recenttracks', you can ignore this")
 
 if __name__ == '__main__':
-    print("welcome to last.fm-rpc!")
+    print("welcome to listening-to!")
     main()
