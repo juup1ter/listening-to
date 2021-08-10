@@ -1,6 +1,6 @@
 certifi==2020.12.5
 chardet==3.0.4
 idna==2.10
-pypresence==4.0.0
+pypresence==4.2.0
 requests==2.25.0
 urllib3==1.26.2
