@@ -1,5 +1,6 @@
 ## listening-to
 a program that displays your current status on last.fm to the world on discord
+
 ![](screenshot.png)
 ### installation
 to install from source:
