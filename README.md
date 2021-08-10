@@ -1,8 +1,6 @@
 ## listening-to
 a program that displays your current status on last.fm to the world on discord
-
 ![](screenshot.png)
-
 ### installation
 to install from source:
 1. clone and cd into this github repository with
@@ -23,7 +21,6 @@ to install from source:
     ```
 to install a compiled binary for windows only, just click download right next to source code.
 
-
 ### usage
 to run, simply execute
 ```
@@ -35,7 +32,6 @@ in whatever directory you cloned into
 or, execute the binary you downloaded
 
 if you see "starting listening-to", and it starts to display "caching" messages; you've successfully ran the program. your status should be changed on discord.
-
 ### credits
 base by null, null#3330
 expanded by jupiter, jupiter#0413
