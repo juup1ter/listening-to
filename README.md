@@ -35,6 +35,7 @@ or, execute the binary you downloaded
 if you see "starting listening-to", and it starts to display "caching" messages; you've successfully ran the program. your status should be changed on discord.
 ### credits
 base by null, null#3330
+
 expanded by jupiter, jupiter#0413
 
-Thanks to qwertyquerty for [pypresence](https://github.com/qwertyquerty/pypresence)
+thanks to qwertyquerty for [pypresence](https://github.com/qwertyquerty/pypresence)
