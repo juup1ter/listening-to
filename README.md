@@ -33,6 +33,10 @@ in whatever directory you cloned into
 or, execute the binary you downloaded
 
 if you see "starting listening-to", and it starts to display "caching" messages; you've successfully ran the program. your status should be changed on discord.
+
+if you have any problems caching stuff (status will not change on discord but last.fm reports a change), then try editing replace.json with some of the characters that may be of issue.
+this shouldn't be a problem, but i'll leave it here just in case.
+
 ### credits
 base by null, null#3330
 
