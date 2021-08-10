@@ -88,9 +88,7 @@ def main():
                        large_text=album_display if album_display else None)
             
             if old_trackname != trackinfo["name"]:
-                print(
-                    f"updating rpc with current track {trackinfo['name']}..."
-                    )
+                print(f"updating rpc with current track {trackinfo['name']}...")
                 old_trackname = trackinfo["name"]
                 print("successfully set rpc!")
 
