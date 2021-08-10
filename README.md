@@ -20,7 +20,7 @@ to install from source:
     ```bash
     python3 -m pip install -r requirements.txt
     ```
-to install a compiled binary for windows only, just click download right next to source code.
+to install a compiled binary for windows only, just click on the releases tab next to the source code.
 
 ### usage
 to run, simply execute
