@@ -30,9 +30,9 @@ def main():
     lfmimg = config['lfmimg']
         
     if lfm in album_cache and lfm:
-        print("lfm small image found! skipping first cache process...")
+        print("small image found! skipping first cache process...\n")
     else:
-        print("lfm small image not found! caching...")
+        print("small image not found! caching...")
         requests.post(DISCORD_API_POST_URL.format(client_id=config["client_id"]),
                       json={"name": "lfm",
                             "image": lfmimg,
@@ -42,7 +42,7 @@ def main():
         album_cache.append("lfm")
         with open("album_cache.p", "wb") as f:
             pickle.dump(album_cache, f)
-        print("cached successfully!")
+        print("cached successfully!\n")
 
     rpc = pypresence.Presence(config["client_id"], pipe=0)
     rpc.connect()
@@ -56,51 +56,49 @@ def main():
             trackinfo = trackinfo["recenttracks"]["track"][0]
 
             album_text = trackinfo["album"]["#text"]
-            album_text_fix = trackinfo["album"]["#text"] + "​​"
-            track_fix = trackinfo["name"] + "​​"
+            album_display = trackinfo["album"]["#text"] + "​​"
+            track_display = trackinfo["name"] + "​​"
             replace = special_characters
             album_name = album_text.translate(str.maketrans(replace)).lower()[:32]            
-            alb_fix = ''.join([str(ord(x) - 96) for x in album_name])[:32]
+            album_discord = ''.join([str(ord(x) - 96) for x in album_name])[:32]
             
-            if alb_fix not in album_cache and alb_fix:
+            if album_discord not in album_cache and album_discord:
                 print(f"{album_text} not found in album cache, caching...")
                 cover_img = requests.get(
                     trackinfo["image"][1]["#text"]).content
                 cover_img = "data:image/jpeg;base64," + \
                     str(base64.b64encode(cover_img), "utf-8")
                 requests.post(DISCORD_API_POST_URL.format(client_id=config["client_id"]),
-                              json={"name": alb_fix,
+                              json={"name": album_discord,
                                     "image": cover_img,
                                     "type": 1},
                               headers={"Authorization": config["discord_token"],
                                        "content-type": "application/json"})
-                print(f"converted {album_text} to {alb_fix} successfully!")
+                print(f"converted {album_text} to {album_discord} successfully!")
                 print(f"{album_text} sent to discord correctly!")
-                album_cache.append(alb_fix)
+                album_cache.append(album_discord)
                 with open("album_cache.p", "wb") as f:
                     pickle.dump(album_cache, f)
-                print("cached!")
+                print("cached succesfully!\n")
 
-            rpc.update(details=f"{track_fix}​​​​",
+            rpc.update(details=f"{track_display}",
                        state=f"by {trackinfo['artist']['#text']}",
-                       large_image=alb_fix if alb_fix else None,
+                       large_image=album_discord if album_discord else None,
                        small_image="lfm",
                        small_text=f"scrobbling on account {config['lastfm_name']}",
-                       large_text=album_text_fix if album_text_fix else None)
+                       large_text=album_display if album_display else None)
             
             if old_trackname != trackinfo["name"]:
-                print(
-                    f"updating rpc with current track {trackinfo['name']}..."
-                    )
+                print(f"updating rpc with current track {trackinfo['name']}...")
                 old_trackname = trackinfo["name"]
-                print("successfully set rpc!")
+                print("successfully set rpc!\n")
 
             time.sleep(0.3)
 
         except Exception as e:
             print("exception occurred:", e)
-            print("skipping generic lastfm error: 'recenttracks', you can ignore this")
+            print("skipping generic lastfm error: 'recenttracks', you can ignore this\n")
 
 if __name__ == '__main__':
-    print("welcome to listening-to!")
+    print("welcome to listening-to!\n")
     main()
