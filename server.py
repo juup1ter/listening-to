@@ -4,7 +4,6 @@ import base64
 import pickle
 import requests
 import pypresence
-import re
 import discord
 from discord.ext import commands
 from pypresence import presence
