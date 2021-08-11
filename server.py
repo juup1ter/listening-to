@@ -4,6 +4,7 @@ import base64
 import pickle
 import requests
 import pypresence
+import re
 import discord
 from discord.ext import commands
 from pypresence import presence
@@ -55,8 +56,8 @@ def main():
             trackinfo = trackinfo["recenttracks"]["track"][0]
 
             album_text = trackinfo["album"]["#text"]
-            album_display = trackinfo["album"]["#text"] + "​​"
-            track_display = trackinfo["name"] + "​​"
+            album_text_fix = trackinfo["album"]["#text"] + "​​"
+            track_fix = trackinfo["name"] + "​​"
             replace = special_characters
             album_name = album_text.translate(str.maketrans(replace)).lower()[:32]            
             alb_fix = ''.join([str(ord(x) - 96) for x in album_name])[:32]
@@ -78,17 +79,19 @@ def main():
                 album_cache.append(alb_fix)
                 with open("album_cache.p", "wb") as f:
                     pickle.dump(album_cache, f)
-                print("cached successfully!")
+                print("cached!")
 
-            rpc.update(details=f"{track_fix}",
+            rpc.update(details=f"{track_fix}​​​​",
                        state=f"by {trackinfo['artist']['#text']}",
                        large_image=alb_fix if alb_fix else None,
                        small_image="lfm",
                        small_text=f"scrobbling on account {config['lastfm_name']}",
-                       large_text=album_display if album_display else None)
+                       large_text=album_text_fix if album_text_fix else None)
             
             if old_trackname != trackinfo["name"]:
-                print(f"updating rpc with current track {trackinfo['name']}...")
+                print(
+                    f"updating rpc with current track {trackinfo['name']}..."
+                    )
                 old_trackname = trackinfo["name"]
                 print("successfully set rpc!")
 
