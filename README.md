@@ -36,8 +36,8 @@ or, execute the binary you downloaded
 
 if you see "starting listening-to", and it starts to display "caching" messages; you've successfully ran the program. your status should be changed on discord.
 
-if you have any problems caching stuff (status will not change on discord but last.fm reports a change), then try editing replace.json with some of the characters that may be of issue.
-this shouldn't be a problem, but i'll leave it here just in case.
+if you have any problems caching stuff (status will not change on discord but last.fm reports a change), then try editing replace.json with some of the characters that may be of issue. this shouldn't be a problem, but i'll leave it here just in case.
+another issue i've seen is people with 2fa who log out/log in frequently may see this program break due to their token changing, if this happens to you: just change your token in config.json with your current one.
 
 ### credits
 base by null, null#3330
