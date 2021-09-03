@@ -9,9 +9,11 @@ to install from source:
     git clone https://github.com/juup1ter/listening-to/ && cd listening-to
     ```
     or, download the tarball and extract it
+    
 2a. go to the [discord dev portal](https://discord.com/developers/) and create a new application, you will replace client_id in config.json with your application id
  
 2b. name this application whatever you want your status to look like, for example: if you want it to display "Playing music", you would name the application "music".
+
 3. find your discord user token, google how to do it. you will replace discord_token in config.json with your token
 
     > be warned as this is in the grey area of discord tos, i am not liable if any action is taken on your account as a result of this program. 
